@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | Fudagape</title>
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-blue: #1E40AF;
+            --accent-green: #10B981;
+            --text-main: #334155;
+            --text-muted: #64748B;
+            --bg-body: #F8FAFC;
+            --white: #FFFFFF;
+            --radius-lg: 24px;
+            --shadow-subtle: 0 10px 30px -5px rgba(15, 23, 42, 0.06);
+            --shadow-hover: 0 20px 40px -10px rgba(30, 64, 175, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+        header {
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.35rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo-area i {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-blue);
+        }
+
+        /* HERO SECCIÓN */
+        .hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+            color: var(--white);
+            padding: 5rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--bg-body);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34D399;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .main-container {
+            max-width: 1000px;
+            width: 100%;
+            margin: -3rem auto 4rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            flex: 1;
+        }
+
+        /* TARJETAS */
+        .card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-header-flex {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon-box {
+            width: 50px;
+            height: 50px;
+            background: #EEF2FF;
+            color: var(--primary-blue);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .card h2 {
+            color: var(--primary);
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .card p {
+            color: var(--text-main);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* SECCIÓN DE GALERÍA DE FOTOS */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-item {
+            background: #E2E8F0;
+            border-radius: 16px;
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-weight: 600;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        /* Si prefieres usar imágenes reales puedes reemplazar el fondo o usar etiquetas <img> */
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* SECCIÓN DE REDES SOCIALES */
+        .social-section {
+            text-align: center;
+        }
+
+        .social-section p.subtitle {
+            color: var(--text-muted);
+            max-width: 550px;
+            margin: 0.5rem auto 2.5rem;
+            font-size: 1rem;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .social-btn {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 20px;
+            padding: 2rem 1rem;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-btn i {
+            font-size: 2.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-btn span {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* Colores corporativos por red social al hacer hover */
+        .social-btn.facebook i { color: #1877F2; }
+        .social-btn.facebook:hover { background: #1877F2; border-color: #1877F2; }
+
+        .social-btn.instagram i { color: #E1306C; }
+        .social-btn.instagram:hover { background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF); border-color: transparent; }
+
+        .social-btn.whatsapp i { color: #25D366; }
+        .social-btn.whatsapp:hover { background: #25D366; border-color: #25D366; }
+
+        .social-btn.tiktok i { color: #000000; }
+        .social-btn.tiktok:hover { background: #000000; border-color: #000000; }
+
+        .social-btn:hover i, 
+        .social-btn:hover span {
+            color: var(--white) !important;
+            transform: scale(1.1);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: #94A3B8;
+            text-align: center;
+            padding: 2.5rem 2rem;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin-bottom: 0.4rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .social-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(1, 1fr); }
+            .card { padding: 2rem 1.5rem; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN COMPLETA Y COMPATIBLE CON FLASK -->
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo-area">
+                <i class="fa-solid fa-hands-holding-child"></i>
+                <span>FUDAGAPE</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/#proyectos">Proyectos</a></li>
+                    <li><a href="/nosotros" class="active">Nosotros</a></li>
+                    <li><a href="/#donar">Donar</a></li>
+                    <li><a href="/#involucrarse">Involucrarse</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CABECERA HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">Transparencia y Comunidad</span>
+            <h1>Sobre Nosotros</h1>
+            <p>Conoce más acerca de nuestra misión, visión y cómo puedes conectar directamente con nuestra comunidad.</p>
+        </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-container">
+        
+        <!-- ¿Quiénes Somos? -->
+        <div class="card">
+            <div class="card-header-flex">
+                <div class="card-icon-box">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <h2>¿Quiénes Somos?</h2>
+            </div>
+            <p>
+                Fudagape (Fundación para el Desarrollo y Apoyo Comunitario) es una organización comprometida con el desarrollo social, la educación y el bienestar de las familias y sectores vulnerables. Impulsamos iniciativas transformadoras que promueven el crecimiento sostenible y la integración comunitaria.
+            </p>
+            <p>
+                Brindamos herramientas de capacitación, apoyo integral y gestión comunitaria articulada, fomentando valores de solidaridad, igualdad y progreso social en cada región donde operamos.
+            </p>
+        </div>
+
+        <!-- Sección de Fotos / Galería Comunitaria -->
+        <div class="card">
+            <div class="card-header-flex">
+                <div class="card-icon-box">
+                    <i class="fa-solid fa-images"></i>
+                </div>
+                <h2>Nuestra Labor en Imágenes</h2>
+            </div>
+            <p>
+                Un vistazo a los momentos compartidos, talleres y el impacto directo de nuestros programas en las comunidades de Cajamarca.
+            </p>
+            
+            <div class="gallery-grid">
+                <!-- Puedes cambiar las etiquetas div por <img src="tu_imagen.jpg" alt="..."> si prefieres fotos reales -->
+                <div class="gallery-item">
+                    <i class="fa-solid fa-image" style="font-size: 2rem; margin-right: 8px;"></i> Actividad Social
+                </div>
+                <div class="gallery-item">
+                    <i class="fa-solid fa-image" style="font-size: 2rem; margin-right: 8px;"></i> Talleres Educativos
+                </div>
+                <div class="gallery-item">
+                    <i class="fa-solid fa-image" style="font-size: 2rem; margin-right: 8px;"></i> Apoyo Comunitario
+                </div>
+            </div>
+        </div>
+
+        <!-- Redes Sociales -->
+        <div id="contacto" class="card social-section">
+            <div style="display: inline-flex; justify-content: center; align-items: center; width: 50px; height: 50px; background: #ECFDF5; color: var(--accent-green); border-radius: 14px; font-size: 1.4rem; margin-bottom: 1rem;">
+                <i class="fa-solid fa-share-nodes"></i>
+            </div>
+            <h2>Nuestras Redes Sociales</h2>
+            <p class="subtitle">
+                Haz clic en cualquiera de nuestros canales oficiales para visitarnos, interactuar y escribirnos directamente.
+            </p>
+            
+            <div class="social-grid">
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/fudagape?mibextid=2JQ9oc" target="_blank" class="social-btn facebook" title="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </a>
+                
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/fudagapeeltallerdelmaestro/" target="_blank" class="social-btn instagram" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                
+                <!-- WhatsApp -->
+                <a href="https://api.whatsapp.com/send?phone=14076555078&text=Hola%20Fudagape!" target="_blank" class="social-btn whatsapp" title="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@fudagape" target="_blank" class="social-btn tiktok" title="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p>&copy; 2026 Fudagape. Todos los derechos reservados.</p>
+        <p style="font-size: 0.85rem; opacity: 0.7;">Fundación para el Desarrollo y Apoyo Comunitario</p>
+    </footer>
+
+</body>
+</html>

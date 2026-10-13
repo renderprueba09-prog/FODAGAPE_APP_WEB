@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Involucrarse | Fundación{% endblock %}
+
+{% block content %}
+<!-- Encabezado de la Sección -->
+<section class="page-header">
+    <div class="container">
+        <span class="badge">Únete a nosotros</span>
+        <h1>Involúcrate y Haz la Diferencia</h1>
+        <p>Tu tiempo, talento o apoyo económico pueden transformar realidades. Contáctanos y sé parte de nuestra comunidad solidaria.</p>
+    </div>
+</section>
+
+<!-- Sección del Formulario y Contacto -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-grid">
+            
+            <!-- Columna de Información -->
+            <div class="contact-info">
+                <h2>Estamos aquí para escucharte</h2>
+                <p>Invitamos a todos los que comparten nuestros valores a sumarse a nuestras actividades. Juntos podemos traer luz y esperanza donde más se necesita.</p>
+                
+                <div class="info-box">
+                    <h3>📍 Ubicación y Contacto</h3>
+                    <p><strong>Correo electrónico:</strong> asociacionfudagape@gmail.com</p>
+                    <p><strong>Ubicación:</strong> Cajamarca, Perú</p>
+                </div>
+            </div>
+
+            <!-- Columna del Formulario (Procesado por Python) -->
+            <div class="contact-form-wrapper">
+                {% if enviado %}
+                <div class="success-alert">
+                    <h3>¡Gracias por tu mensaje!</h3>
+                    <p>Hemos recibido tu información correctamente a través de nuestro sistema en Python. Nos pondremos en contacto contigo muy pronto.</p>
+                    <a href="{{ url_for('contacto') }}" class="btn-primary" style="display:inline-block; margin-top:1rem;">Enviar otro mensaje</a>
+                </div>
+                {% else %}
+                <form action="{{ url_for('contacto') }}" method="POST" class="contact-form">
+                    <h3>Formulario de Registro / Mensaje</h3>
+                    
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Ej. Juan Pérez">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">¿Cómo deseas ayudar o cuál es tu mensaje?</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; cursor: pointer; border: none;">Enviar Mensaje</button>
+                </form>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

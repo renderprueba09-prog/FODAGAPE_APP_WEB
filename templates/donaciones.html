@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Donaciones | Fundación Fudagape{% endblock %}
+
+{% block content %}
+<!-- ENCABEZADO DE LA PÁGINA -->
+<section style="background: linear-gradient(135deg, var(--primary-deep), var(--primary-light)); color: white; padding: 5rem 2rem; text-align: center;">
+    <div class="container" style="max-width: 800px;">
+        <span style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: inline-block; margin-bottom: 1rem;">Haz la diferencia hoy</span>
+        <h1 style="font-size: 2.8rem; margin: 0 0 1rem; font-weight: 800; letter-spacing: -0.5px;">Tu generosidad transforma realidades</h1>
+        <p style="font-size: 1.15rem; opacity: 0.9; line-height: 1.6; margin: 0;">Cada aporte económico o material se convierte en una herramienta directa de cambio y esperanza en Cajamarca.</p>
+    </div>
+</section>
+
+<!-- BARRA DE PROGRESO DINÁMICA -->
+<section style="max-width: 900px; margin: -2.5rem auto 0 auto; padding: 0 2rem; position: relative; z-index: 10;">
+    <div style="background: var(--surface-white); padding: 2.5rem; border-radius: 20px; border: 1px solid var(--border-subtle); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-weight: 700; color: var(--primary-deep); font-size: 1.05rem;">Meta Mensual: S/. {{ config.meta_recaudacion }}</span>
+            <span style="background: #ecfdf5; color: #059669; padding: 0.3rem 0.8rem; border-radius: 50px; font-weight: 700; font-size: 0.9rem;">Recaudado: S/. {{ config.actual_recaudacion }}</span>
+        </div>
+        
+        <!-- Barra visual de progreso -->
+        <div style="width: 100%; background: var(--neutral-bg); height: 16px; border-radius: 50px; overflow: hidden; border: 1px solid var(--border-subtle); padding: 2px;">
+            <div id="barraProgreso" style="width: 0%; background: linear-gradient(135deg, var(--accent-success), #059669); height: 100%; border-radius: 50px; transition: width 1.2s ease-in-out;"></div>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--neutral-muted); margin-top: 1rem; text-align: center; font-weight: 500;">¡Gracias al apoyo de nuestra comunidad estamos más cerca de cumplir nuestro objetivo social este mes!</p>
+    </div>
+</section>
+
+<!-- OPCIONES DE DONACIÓN -->
+<section style="padding: 5rem 2rem 6rem; background-color: var(--neutral-bg);">
+    <div class="container" style="max-width: 1100px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem;">
+            
+            <!-- Opción Aporte Económico -->
+            <div style="background: var(--surface-white); border-radius: 24px; padding: 3rem 2.5rem; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft); position: relative; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 20px 30px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-soft)';">
+                <span style="position: absolute; top: 1.5rem; right: 1.5rem; background: var(--primary-deep); color: white; padding: 0.3rem 0.9rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Principal</span>
+                
+                <div>
+                    <div style="font-size: 2.5rem; margin-bottom: 1.5rem; background: #f0fdf4; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; border-radius: 16px;">💳</div>
+                    <h3 style="color: var(--primary-deep); font-size: 1.6rem; font-weight: 800; margin-bottom: 0.8rem;">Aporte Económico</h3>
+                    <p style="color: var(--neutral-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 2rem;">Tu colaboración financiera nos permite sostener los programas sociales de forma continua y directa.</p>
+                    
+                    <div style="background: var(--neutral-bg); padding: 1.5rem; border-radius: 16px; margin-bottom: 2rem; border: 1px solid var(--border-subtle);">
+                        <p style="font-size: 0.85rem; color: var(--primary-deep); font-weight: 700; margin-bottom: 0.8rem;">Yape / Plin / Transferencia BCP:</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; font-size: 0.95rem;">
+                            <span>Cuenta: <strong>123-45678912-0-34</strong></span>
+                            <button onclick="copiarTexto('12345678912034', this)" style="background: none; border: none; color: var(--primary-light); cursor: pointer; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem;">
+                            <span>CCI: <strong>002-1231234567891234</strong></span>
+                            <button onclick="copiarTexto('0021231234567891234', this)" style="background: none; border: none; color: var(--primary-light); cursor: pointer; font-size: 0.85rem; font-weight: 600;"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="{{ url_for('donacion_dinero') }}" style="background: var(--primary-deep); color: white; padding: 1rem; border-radius: 12px; text-align: center; text-decoration: none; font-weight: 700; display: block; transition: background 0.2s;" onmouseover="this.style.background='var(--primary-light)'" onmouseout="this.style.background='var(--primary-deep)'">Notificar mi donación</a>
+            </div>
+
+            <!-- Opción Donación de Insumos -->
+            <div style="background: var(--surface-white); border-radius: 24px; padding: 3rem 2.5rem; border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 20px 30px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-soft)';">
+                <div>
+                    <div style="font-size: 2.5rem; margin-bottom: 1.5rem; background: #eff6ff; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; border-radius: 16px;">📦</div>
+                    <h3 style="color: var(--primary-deep); font-size: 1.6rem; font-weight: 800; margin-bottom: 0.8rem;">Donación de Insumos</h3>
+                    <p style="color: var(--neutral-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 2rem;">Recibimos víveres no perecibles, útiles escolares y ropa en buen estado para las familias de Cajamarca.</p>
+                    
+                    <ul style="list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                        <li style="display: flex; align-items: center; gap: 0.8rem; color: var(--neutral-dark); font-size: 0.95rem;"><span style="color: var(--accent-success); font-size: 1.2rem;">✔</span> <strong>Libros y útiles escolares</strong> para niños en etapa escolar.</li>
+                        <li style="display: flex; align-items: center; gap: 0.8rem; color: var(--neutral-dark); font-size: 0.95rem;"><span style="color: var(--accent-success); font-size: 1.2rem;">✔</span> <strong>Alimentos de primera necesidad</strong> no perecibles.</li>
+                        <li style="display: flex; align-items: center; gap: 0.8rem; color: var(--neutral-dark); font-size: 0.95rem;"><span style="color: var(--accent-success); font-size: 1.2rem;">✔</span> <strong>Ropa y abrigo</strong> en buen estado para temporadas de frío.</li>
+                    </ul>
+                </div>
+                
+                <a href="{{ url_for('contacto') }}" style="background: transparent; color: var(--primary-deep); border: 2px solid var(--primary-deep); padding: 1rem; border-radius: 12px; text-align: center; text-decoration: none; font-weight: 700; display: block; transition: all 0.2s;" onmouseover="this.style.background='var(--primary-deep)'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='var(--primary-deep)';">Coordinar entrega</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    // Cálculo automático del porcentaje de la barra de progreso
+    window.addEventListener('DOMContentLoaded', () => {
+        let meta = parseFloat("{{ config.meta_recaudacion }}".replace(/[^0-9.-]+/g,"")) || 1000;
+        let actual = parseFloat("{{ config.actual_recaudacion }}".replace(/[^0-9.-]+/g,"")) || 0;
+        let porcentaje = Math.min(Math.round((actual / meta) * 100), 100);
+        
+        setTimeout(() => {
+            document.getElementById('barraProgreso').style.width = porcentaje + '%';
+        }, 200);
+    });
+
+    // Función para copiar cuentas bancarias al portapapeles
+    function copiarTexto(texto, btn) {
+        navigator.clipboard.writeText(texto).then(() => {
+            let originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
+            btn.style.color = '#059669';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.color = 'var(--primary-light)';
+            }, 2000);
+        });
+    }
+</script>
+{% endblock %}

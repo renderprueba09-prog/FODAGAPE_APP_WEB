@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fudagape | Transformamos vidas con propósito</title>
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Swiper.js CSS para el carrusel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-blue: #2563EB;
+            --primary-blue-dark: #1D4ED8;
+            --accent-green: #10B981;
+            --whatsapp-green: #25D366;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --bg-body: #F8FAFC;
+            --white: #FFFFFF;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --shadow-subtle: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
+            --shadow-hover: 0 20px 40px -10px rgba(37, 99, 235, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR PREMIUM */
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-icon-box {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary-blue), #1E3A8A);
+            color: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 8px 16px -4px rgba(37, 99, 235, 0.3);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-blue);
+        }
+
+        .nav-cta {
+            background: var(--primary-blue) !important;
+            color: var(--white) !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: radial-gradient(circle at 50% 0%, #1E293B 0%, #0F172A 100%);
+            color: var(--white);
+            padding: 7rem 2rem 9rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(37, 99, 235, 0.18) 0%, rgba(16, 185, 129, 0.08) 50%, transparent 70%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--bg-body);
+            border-radius: 40px 40px 0 0;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 3;
+        }
+
+        .badge-location {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            color: #34D399;
+            padding: 0.45rem 1.4rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            letter-spacing: -1px;
+            line-height: 1.15;
+            color: var(--white);
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #60A5FA 0%, #34D399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #94A3B8;
+            max-width: 680px;
+            margin: 0 auto 2.5rem;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+            color: var(--white);
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--white);
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .main-container {
+            max-width: 1200px;
+            margin: -3rem auto 5rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* BANNER INSTITUCIONAL */
+        .quote-banner {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1E3A8A 100%);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            color: var(--white);
+            text-align: center;
+            box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-banner::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.04);
+        }
+
+        .quote-banner blockquote {
+            font-size: 1.6rem;
+            font-weight: 700;
+            font-style: italic;
+            margin-bottom: 1rem;
+            letter-spacing: -0.3px;
+        }
+
+        .quote-banner span {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            font-weight: 600;
+        }
+
+        /* PILARES GRID */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .pillar-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+
+        .pillar-icon-box {
+            width: 64px;
+            height: 64px;
+            background: #EEF2FF;
+            color: var(--primary-blue);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .pillar-card:hover .pillar-icon-box {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: scale(1.08) rotate(5deg);
+        }
+
+        .pillar-card h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .pillar-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* CARRUSEL DE FOTOS */
+        .gallery-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 4rem 2.5rem;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .swiper {
+            width: 100%;
+            padding-top: 1rem;
+            padding-bottom: 3rem;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 380px;
+            height: 260px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .slide-content {
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.85), transparent);
+            width: 100%;
+            padding: 1.5rem;
+            color: var(--white);
+        }
+
+        .slide-content h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .slide-content p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--primary-blue) !important;
+        }
+
+        /* ==========================================
+           MURO DE AGRADECIMIENTOS EN VIVO (WALL)
+           ========================================== */
+        .gratitude-section {
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            border-radius: var(--radius-lg);
+            padding: 4rem 3rem;
+            border: 1px solid rgba(191, 219, 254, 0.8);
+            position: relative;
+        }
+
+        .gratitude-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gratitude-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 1.8rem;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.05);
+            border: 1px solid #E2E8F0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .gratitude-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .gratitude-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .donor-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #2563EB;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .gratitude-card p {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .gratitude-badge {
+            font-size: 0.75rem;
+            background: #E0E7FF;
+            color: var(--primary-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            align-self: flex-start;
+        }
+
+        .add-gratitude-box {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        /* SECCIÓN DE DONACIONES */
+        .donation-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 4rem 3rem;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            text-align: center;
+        }
+
+        .donation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2.5rem;
+            text-align: left;
+        }
+
+        .donation-card {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .donation-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .donation-card h3 i {
+            color: var(--primary-blue);
+        }
+
+        .bank-info {
+            background: var(--white);
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            border: 1px dashed #CBD5E1;
+            font-size: 0.95rem;
+        }
+
+        .bank-info strong {
+            color: var(--primary);
+        }
+
+        /* SECCIÓN DE VOLUNTARIADO */
+        .involve-section {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 4rem 3rem;
+            box-shadow: var(--shadow-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .involve-section .section-header h2 {
+            color: var(--white);
+        }
+
+        .involve-section .section-header p {
+            color: #94A3B8;
+        }
+
+        .involve-form {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: var(--radius-md);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #CBD5E1;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            color: var(--white);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--accent-green);
+        }
+
+        .form-group select option {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* FAQ Y NOTICIAS */
+        .faq-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 4rem 3rem;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            border: 1px solid #E2E8F0;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        .faq-question {
+            background: #F8FAFC;
+            padding: 1.2rem 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.05rem;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: var(--primary-blue);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            background: var(--white);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 1rem 1.5rem 1.5rem;
+        }
+
+        .news-section {
+            background: #F1F5F9;
+            border-radius: var(--radius-lg);
+            padding: 4rem 3rem;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid #E2E8F0;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .news-img {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2.5rem;
+        }
+
+        .news-content {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            flex: 1;
+        }
+
+        .news-date {
+            font-size: 0.8rem;
+            color: var(--accent-green);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .news-content h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .news-content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* HISTORIAS QUE INSPIRAN */
+        .stories-container {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 3.5rem;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .story-card {
+            background: #F8FAFC;
+            border-left: 5px solid var(--accent-green);
+            padding: 2.5rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin-top: 1.5rem;
+        }
+
+        .story-card p {
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .story-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            background: #D1FAE5;
+            color: #059669;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            color: var(--primary);
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .author-info span {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* BOTÓN FLOTANTE DE WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp-green);
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 2000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-4px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
+            color: var(--white);
+        }
+
+        /* WIDGET DE CHATBOT CON IA */
+        .chat-toggle-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, var(--primary-blue), #1E3A8A);
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+            z-index: 2000;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .chat-toggle-btn:hover {
+            transform: scale(1.1) translateY(-4px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.6);
+        }
+
+        .chat-window {
+            position: fixed;
+            bottom: 105px;
+            left: 30px;
+            width: 360px;
+            height: 480px;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.2);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transform: scale(0);
+            transform-origin: bottom left;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .chat-window.active {
+            transform: scale(1);
+        }
+
+        .chat-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-header h3 i {
+            color: var(--accent-green);
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .chat-close:hover {
+            opacity: 1;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: #F8FAFC;
+        }
+
+        .chat-message {
+            max-width: 80%;
+            padding: 0.8rem 1rem;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .chat-message.bot {
+            background: var(--white);
+            color: var(--text-main);
+            align-self: flex-start;
+            border: 1px solid #E2E8F0;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-message.user {
+            background: var(--primary-blue);
+            color: var(--white);
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-footer {
+            padding: 0.8rem;
+            background: var(--white);
+            border-top: 1px solid #E2E8F0;
+            display: flex;
+            gap: 8px;
+        }
+
+        .chat-footer input {
+            flex: 1;
+            padding: 0.6rem 1rem;
+            border: 1px solid #CBD5E1;
+            border-radius: 50px;
+            outline: none;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.2s;
+        }
+
+        .chat-footer input:focus {
+            border-color: var(--primary-blue);
+        }
+
+        .chat-footer button {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .chat-footer button:hover {
+            background: var(--primary-blue-dark);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: #94A3B8;
+            text-align: center;
+            padding: 3.5rem 2rem;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer p {
+            margin-bottom: 0.4rem;
+        }
+
+        @media (max-width: 968px) {
+            .hero h1 { font-size: 2.8rem; }
+            .pillars-grid, .donation-grid, .involve-form, .news-grid, .gratitude-grid { grid-template-columns: repeat(1, 1fr); }
+            .nav-container nav ul { display: none; }
+            .stories-container, .gallery-section, .donation-section, .involve-section, .faq-section, .news-section, .gratitude-section { padding: 2rem; }
+            .swiper-slide { width: 300px; height: 220px; }
+            .whatsapp-float { width: 52px; height: 52px; font-size: 1.7rem; bottom: 20px; right: 20px; }
+            .chat-toggle-btn { width: 52px; height: 52px; font-size: 1.4rem; bottom: 20px; left: 20px; }
+            .chat-window { width: calc(100vw - 40px); left: 20px; right: 20px; height: 420px; bottom: 85px; }
+            .form-group.full { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://api.whatsapp.com/send?phone=14076555078&text=Hola%20Fudagape,%20deseo%20más%20información." target="_blank" class="whatsapp-float" title="Escríbenos por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- WIDGET DE CHATBOT CON IA -->
+    <button class="chat-toggle-btn" id="chatToggle" title="Pregúntale a la IA">
+        <i class="fa-solid fa-comments"></i>
+    </button>
+
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <h3><i class="fa-solid fa-circle"></i> Asistente Fudagape</h3>
+            <button class="chat-close" id="chatClose"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-message bot">
+                ¡Hola! Soy el asistente virtual de Fudagape. ¿En qué puedo ayudarte hoy sobre nuestras campañas o voluntariados?
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Escribe tu consulta...">
+            <button id="chatSend"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- NAVBAR PREMIUM -->
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo-area">
+                <div class="logo-icon-box">
+                    <i class="fa-solid fa-hands-holding-child"></i>
+                </div>
+                <span>FUDAGAPE</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="/" class="active">Inicio</a></li>
+                    <li><a href="/#proyectos">Proyectos</a></li>
+                    <li><a href="/nosotros">Nosotros</a></li>
+                    <li><a href="/#donar">Donar</a></li>
+                    <li><a href="#involucrarse">Involucrarse</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge-location">
+                <i class="fa-solid fa-location-dot"></i> Cajamarca, Perú
+            </div>
+            <h1>Transformamos vidas con <span>propósito y solidaridad</span></h1>
+            <p>Impulsamos el desarrollo comunitario en Cajamarca a través de programas de apoyo social, educación y asistencia humanitaria integral.</p>
+            <div class="hero-buttons">
+                <a href="#donar" class="btn-primary">
+                    <i class="fa-solid fa-heart"></i> Quiero Donar
+                </a>
+                <a href="#involucrarse" class="btn-secondary">
+                    <i class="fa-solid fa-hands-bound"></i> Involúcrate Hoy
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="main-container">
+        
+        <!-- BANNER INSTITUCIONAL -->
+        <div class="quote-banner">
+            <blockquote>"Cada acción desinteresada tiene el poder de restaurar la esperanza."</blockquote>
+            <span>— Mensaje institucional editable</span>
+        </div>
+
+        <!-- SECCIÓN PILARES DE ACCIÓN -->
+        <section id="proyectos">
+            <div class="section-header">
+                <h2>Nuestros Pilares de Acción</h2>
+                <p>Pilares fundamentales que guían cada paso de nuestra labor humanitaria en la región.</p>
+            </div>
+
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fa-solid fa-handshake-angle"></i>
+                    </div>
+                    <h3>Ayuda Solidaria</h3>
+                    <p>Brindamos asistencia directa a familias en situación de vulnerabilidad mediante recursos esenciales y apoyo inmediato.</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educación con Futuro</h3>
+                    <p>Facilitamos herramientas de aprendizaje y útiles escolares para niñas, niños y jóvenes de comunidades alejadas.</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3>Desarrollo Sostenible</h3>
+                    <p>Promovemos iniciativas autosostenibles que mejoran la calidad de vida y el bienestar a largo plazo de las familias.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARRUSEL DE FOTOS -->
+        <section class="gallery-section">
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <h2>Momentos que Dejan Huella</h2>
+                <p>Un recorrido visual por las actividades y sonrisas de nuestra comunidad.</p>
+            </div>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background: linear-gradient(135deg, #1E3A8A, #2563EB);">
+                        <div class="slide-content">
+                            <h4>Talleres Educativos</h4>
+                            <p>Apoyo escolar en zonas rurales de Cajamarca</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" style="background: linear-gradient(135deg, #0F172A, #059669);">
+                        <div class="slide-content">
+                            <h4>Entrega de Donaciones</h4>
+                            <p>Llevando recursos esenciales a familias</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" style="background: linear-gradient(135deg, #1E293B, #3B82F6);">
+                        <div class="slide-content">
+                            <h4>Integración Comunitaria</h4>
+                            <p>Trabajando unidos por un mejor futuro</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" style="background: linear-gradient(135deg, #065F46, #10B981);">
+                        <div class="slide-content">
+                            <h4>Desarrollo Sostenible</h4>
+                            <p>Proyectos de capacitación a largo plazo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+           MURO DE AGRADECIMIENTOS EN VIVO
+           ========================================== -->
+        <section class="gratitude-section">
+            <div class="section-header">
+                <h2>Muro de Gratitud y Solidaridad</h2>
+                <p>Mensajes reales de apoyo dejados por donantes y voluntarios que hacen posible nuestra misión.</p>
+            </div>
+
+            <div class="gratitude-grid" id="gratitudeGrid">
+                <div class="gratitude-card">
+                    <div class="gratitude-header">
+                        <div class="donor-avatar">MG</div>
+                        <div>
+                            <strong style="color: var(--primary);">María González</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">Hace 15 minutos</div>
+                        </div>
+                    </div>
+                    <p>"Feliz de poder aportar un granito de arena para la educación de los niños de Cajamarca."</p>
+                    <span class="gratitude-badge"><i class="fa-solid fa-heart"></i> Donante</span>
+                </div>
+
+                <div class="gratitude-card">
+                    <div class="gratitude-header">
+                        <div class="donor-avatar" style="background: #10B981;">CR</div>
+                        <div>
+                            <strong style="color: var(--primary);">Carlos Rodríguez</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">Hace 2 horas</div>
+                        </div>
+                    </div>
+                    <p>"Increíble trabajo el que realiza todo el equipo en las zonas rurales. ¡Sigan adelante!"</p>
+                    <span class="gratitude-badge" style="background: #D1FAE5; color: #059669;"><i class="fa-solid fa-handshake"></i> Voluntario</span>
+                </div>
+
+                <div class="gratitude-card">
+                    <div class="gratitude-header">
+                        <div class="donor-avatar" style="background: #8B5CF6;">AF</div>
+                        <div>
+                            <strong style="color: var(--primary);">Familia Aguilar</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">Ayer</div>
+                        </div>
+                    </div>
+                    <p>"Donamos ropa y kits escolares. Transparencia total en cada entrega. ¡Gracias Fudagape!"</p>
+                    <span class="gratitude-badge" style="background: #EDE9FE; color: #6D28D9;"><i class="fa-solid fa-box"></i> Donante en Especie</span>
+                </div>
+            </div>
+
+            <div class="add-gratitude-box">
+                <button class="btn-primary" onclick="addGratitudeMessage()" style="background: var(--primary);">
+                    <i class="fa-solid fa-pen-to-square"></i> Dejar un Mensaje en el Muro
+                </button>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE DONACIONES -->
+        <section id="donar" class="donation-section">
+            <div class="section-header" style="margin-bottom: 1rem;">
+                <h2>Haz una Donación con Propósito</h2>
+                <p>Tu apoyo se convierte en educación, alimentos y asistencia directa para quienes más lo necesitan en Cajamarca.</p>
+            </div>
+
+            <div class="donation-grid">
+                <div class="donation-card">
+                    <h3><i class="fa-solid fa-building-columns"></i> Cuentas Bancarias</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Realiza una transferencia directa a nuestras cuentas institucionales oficiales:</p>
+                    <div class="bank-info">
+                        <strong>BCP Soles:</strong> 123-45678901-0-12<br>
+                        <strong>CCI:</strong> 002-1234567890123456-10
+                    </div>
+                    <div class="bank-info">
+                        <strong>Interbank Soles:</strong> 987-65432109-8-76<br>
+                        <strong>CCI:</strong> 003-9876543210987654-20
+                    </div>
+                </div>
+
+                <div class="donation-card">
+                    <h3><i class="fa-solid fa-mobile-screen-button"></i> Billeteras Digitales & Apoyo</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">¿Deseas donar mediante Yape, Plin o tienes alguna consulta sobre donaciones físicas?</p>
+                    <div class="bank-info" style="text-align: center; padding: 1.5rem;">
+                        <i class="fa-solid fa-phone-volume" style="font-size: 1.8rem; color: var(--accent-green); margin-bottom: 8px;"></i><br>
+                        <strong>Yape / Plin / WhatsApp de Donaciones:</strong><br>
+                        <span style="font-size: 1.1rem; color: var(--primary-blue); font-weight: 700;">+51 900 000 000</span>
+                    </div>
+                    <a href="https://api.whatsapp.com/send?phone=14076555078&text=Hola%20Fudagape,%20deseo%20coordinar%20una%20donación." target="_blank" class="btn-primary" style="justify-content: center; margin-top: auto;">
+                        <i class="fa-brands fa-whatsapp"></i> Coordinar Donación
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE VOLUNTARIADO -->
+        <section id="involucrarse" class="involve-section">
+            <div class="section-header" style="margin-bottom: 2.5rem;">
+                <h2>Únete como Voluntario</h2>
+                <p>Tu tiempo, talento y energía pueden cambiar el rumbo de muchas familias en Cajamarca. Regístrate aquí.</p>
+            </div>
+
+            <form class="involve-form" onsubmit="event.preventDefault(); alert('¡Gracias por registrarte! Nos pondremos en contacto contigo muy pronto.');">
+                <div class="form-group">
+                    <label>Nombres y Apellidos</label>
+                    <input type="text" placeholder="Ej. Juan Pérez" required>
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" placeholder="correo@ejemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Número de Teléfono / WhatsApp</label>
+                    <input type="tel" placeholder="+51 900000000" required>
+                </div>
+                <div class="form-group">
+                    <label>Área de Interés</label>
+                    <select required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="educacion">Apoyo en Talleres Educativos</option>
+                        <option value="logistica">Logística y Entrega de Donaciones</option>
+                        <option value="comunicaciones">Comunicaciones y Redes Sociales</option>
+                        <option value="otro">Otro tipo de apoyo</option>
+                    </select>
+                </div>
+                <div class="form-group full">
+                    <label>¿Por qué te gustaría unirte a Fudagape?</label>
+                    <textarea rows="4" placeholder="Cuéntanos brevemente tu motivación..."></textarea>
+                </div>
+                <div class="form-group full" style="text-align: center; margin-top: 1rem;">
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, var(--accent-green), #059669);">
+                        <i class="fa-solid fa-paper-plane"></i> Enviar Solicitud de Voluntariado
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- SECCIÓN DE PREGUNTAS FRECUENTES -->
+        <section class="faq-section">
+            <div class="section-header">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Resolvemos tus dudas sobre nuestros procesos de ayuda, donaciones y voluntariado.</p>
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Cómo eligen a las comunidades y familias beneficiarias?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Realizamos un diagnóstico socioemocional y económico previo en coordinación con líderes locales de los sectores más vulnerables de Cajamarca, asegurando que la ayuda llegue directamente a quienes más lo necesitan.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Qué tipo de donaciones en especie aceptan?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Recibimos útiles escolares en buen estado, ropa seleccionada, libros educativos y alimentos no perecibles durante nuestras campañas oficiales de acopio.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Puedo recibir un comprobante o certificado por mi donación?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Sí. Para donaciones corporativas o institucionales emitimos la documentación correspondiente de agradecimiento y constancia de apoyo social. Puedes coordinarlo por WhatsApp.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Cuál es el requisito para ser voluntario activo?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Solo necesitas tener vocación de servicio, disponibilidad de tiempo según el proyecto y muchas ganas de aportar al desarrollo de nuestra región. ¡No se requiere experiencia previa!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE BLOG / ÚLTIMAS NOTICIAS -->
+        <section class="news-section">
+            <div class="section-header">
+                <h2>Actualidad y Noticias</h2>
+                <p>Entérate de las últimas actividades, campañas y eventos realizados por la fundación.</p>
+            </div>
+
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-img">
+                        <i class="fa-solid fa-school"></i>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">Septiembre 2026</span>
+                        <h3>Campaña Escolar Exitosa en Zonas Altas</h3>
+                        <p>Logramos entregar kits de útiles escolares completos a decenas de niños en comunidades rurales de Cajamarca.</p>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-img" style="background: linear-gradient(135deg, #059669, #10B981);">
+                        <i class="fa-solid fa-hands-holding-child"></i>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">Agosto 2026</span>
+                        <h3>Nuevo Taller de Capacitación Comunitaria</h3>
+                        <p>Iniciamos jornadas formativas enfocadas en el desarrollo sostenible y emprendimiento familiar.</p>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-img" style="background: linear-gradient(135deg, #1E293B, #475569);">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">Julio 2026</span>
+                        <h3>Alianza Estratégica con Nuevos Aliados</h3>
+                        <p>Firmamos acuerdos de cooperación institucional para potenciar el alcance de nuestros programas sociales este año.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN HISTORIAS QUE INSPIRAN -->
+        <section class="stories-container">
+            <div class="section-header" style="margin-bottom: 1.5rem; text-align: left;">
+                <h2>Historias que Inspiran</h2>
+                <p>Testimonios reales de personas cuyas vidas se han visto impactadas positivamente.</p>
+            </div>
+
+            <div class="story-card">
+                <p>"Gracias al apoyo de la fundación, mis hijos pudieron recibir sus útiles escolares a tiempo para el año lectivo."</p>
+                <div class="story-author">
+                    <div class="author-avatar">RS</div>
+                    <div class="author-info">
+                        <h4>Rosa Sánchez</h4>
+                        <span>Madre de familia beneficiaria</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Fundación Fudagape. Transformamos vidas con propósito y servicio.</p>
+        <p style="font-size: 0.85rem; opacity: 0.6;">Cajamarca, Perú</p>
+    </footer>
+
+    <!-- Swiper.js Script JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Carrusel Swiper
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            initialSlide: 1,
+            coverflowEffect: {
+                rotate: 15,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: false,
+            },
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+
+        // Acordeón FAQ
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                faqItems.forEach(other => {
+                    if (other !== item) other.classList.remove('active');
+                });
+                item.classList.toggle('active');
+            });
+        });
+
+        // Función para agregar mensaje al Muro de Gratitud
+        function addGratitudeMessage() {
+            const name = prompt("Escribe tu nombre o iniciales:");
+            if (!name) return;
+            const message = prompt("Escribe tu mensaje de apoyo o agradecimiento:");
+            if (!message) return;
+
+            const grid = document.getElementById('gratitudeGrid');
+            const newCard = document.createElement('div');
+            newCard.className = 'gratitude-card';
+            newCard.style.animation = 'fadeIn 0.5s ease';
+            
+            const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+
+            newCard.innerHTML = `
+                <div class="gratitude-header">
+                    <div class="donor-avatar" style="background: #10B981;">${initials}</div>
+                    <div>
+                        <strong style="color: var(--primary);">${name}</strong>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Hace un momento</div>
+                    </div>
+                </div>
+                <p>"${message}"</p>
+                <span class="gratitude-badge" style="background: #D1FAE5; color: #059669;"><i class="fa-solid fa-comment-dots"></i> Visitante</span>
+            `;
+
+            grid.prepend(newCard);
+        }
+
+        // Lógica del Chatbot de IA
+        const chatToggle = document.getElementById('chatToggle');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatClose = document.getElementById('chatClose');
+        const chatSend = document.getElementById('chatSend');
+        const chatInput = document.getElementById('chatInput');
+        const chatBody = document.getElementById('chatBody');
+
+        chatToggle.addEventListener('click', () => {
+            chatWindow.classList.toggle('active');
+        });
+        chatClose.addEventListener('click', () => {
+            chatWindow.classList.remove('active');
+        });
+
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-message user';
+            userMsg.textContent = text;
+            chatBody.appendChild(userMsg);
+
+            chatInput.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chat-message bot';
+                botMsg.textContent = "¡Gracias por tu mensaje! Puedes dejar una nota en el Muro de Gratitud o comunicarte al WhatsApp de Fudagape.";
+                chatBody.appendChild(botMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 1000);
+        }
+
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+
+{% block title %}Centro de Comando | Fundación Fudagape{% endblock %}
+
+{% block content %}
+<div class="dashboard-wrapper" style="display: flex; min-height: 100vh; background-color: #f8fafc;">
+    
+    <aside style="width: 280px; background-color: #06283D; color: white; position: fixed; height: 100vh; padding: 2rem 1rem; z-index: 100;">
+        <div style="padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 2rem; text-align: center;">
+            <h2 style="font-size: 1.5rem; font-weight: 800;">Fudagape Admin</h2>
+            <span style="font-size: 0.75rem; opacity: 0.6;">SISTEMA DE GESTIÓN v2.0</span>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul style="list-style: none;">
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="javascript:void(0)" onclick="showTab('resumen')" class="tab-link active" id="link-resumen">
+                        <i class="fas fa-chart-line"></i> Resumen General
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="javascript:void(0)" onclick="showTab('cms')" class="tab-link" id="link-cms">
+                        <i class="fas fa-edit"></i> Editar Contenido Web
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="javascript:void(0)" onclick="showTab('proyectos')" class="tab-link" id="link-proyectos">
+                        <i class="fas fa-folder"></i> Gestión de Proyectos
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="javascript:void(0)" onclick="showTab('galeria')" class="tab-link" id="link-galeria">
+                        <i class="fas fa-images"></i> Galería de Fotos
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="javascript:void(0)" onclick="showTab('donaciones')" class="tab-link" id="link-donaciones">
+                        <i class="fas fa-hand-holding-usd"></i> Donaciones Dinero
+                    </a>
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <a href="javascript:void(0)" onclick="showTab('mensajes')" class="tab-link" id="link-mensajes">
+                        <i class="fas fa-envelope"></i> Mensajes y Contacto
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main style="flex-grow: 1; margin-left: 280px; padding: 3rem;">
+        
+        <header style="margin-bottom: 2.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1 style="font-size: 2rem; color: #06283D; font-weight: 800;">Panel de Administración</h1>
+                <p style="color: #64748B;">Bienvenido, gestiona el impacto de la fundación desde aquí.</p>
+            </div>
+            <a href="{{ url_for('home') }}" class="btn-secondary" style="font-size: 0.85rem;"><i class="fas fa-external-link-alt"></i> Ver Web Pública</a>
+        </header>
+
+        <div id="tab-resumen" class="dashboard-tab">
+            <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                <div class="stat-card" style="background: white; padding: 1.5rem; border-radius: 16px; box-shadow: var(--shadow-sm); border-left: 5px solid #1363DF;">
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #64748B; text-transform: uppercase;">Recaudado Actual</span>
+                    <h4 style="font-size: 1.8rem; margin-top: 0.5rem;">S/. {{ config.actual_recaudacion }}</h4>
+                </div>
+                <div class="stat-card" style="background: white; padding: 1.5rem; border-radius: 16px; box-shadow: var(--shadow-sm); border-left: 5px solid #10B981;">
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #64748B; text-transform: uppercase;">Proyectos</span>
+                    <h4 style="font-size: 1.8rem; margin-top: 0.5rem;">{{ proyectos|length }} Activos</h4>
+                </div>
+                <div class="stat-card" style="background: white; padding: 1.5rem; border-radius: 16px; box-shadow: var(--shadow-sm); border-left: 5px solid #FACC15;">
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #64748B; text-transform: uppercase;">Mensajes</span>
+                    <h4 style="font-size: 1.8rem; margin-top: 0.5rem;">{{ mensajes|length }} Recibidos</h4>
+                </div>
+            </div>
+            <div class="card-premium">
+                <h3>Resumen de Actividad</h3>
+                <p>Usa el menú de la izquierda para gestionar las diferentes áreas de tu plataforma web. El sistema guarda los cambios directamente en la base de datos institucional.</p>
+            </div>
+        </div>
+
+        <div id="tab-cms" class="dashboard-tab" style="display:none;">
+            <div class="card-premium">
+                <h3 style="margin-bottom: 1.5rem;"><i class="fas fa-edit"></i> Editor de Textos Principal</h3>
+                <form action="{{ url_for('actualizar_config') }}" method="POST">
+                    <div class="form-group">
+                        <label>Título de Bienvenida (Inicio)</label>
+                        <input type="text" name="hero_titulo" value="{{ config.hero_titulo }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Subtítulo del Inicio</label>
+                        <textarea name="hero_subtitulo" rows="2" required>{{ config.hero_subtitulo }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Frase Destacada</label>
+                        <input type="text" name="frase_destacada" value="{{ config.frase_destacada }}" required>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="form-group">
+                            <label>Meta Mensual (S/.)</label>
+                            <input type="text" name="meta_recaudacion" value="{{ config.meta_recaudacion }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Monto Recaudado Actual (S/.)</label>
+                            <input type="text" name="actual_recaudacion" value="{{ config.actual_recaudacion }}" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">Publicar Cambios de Texto</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="tab-proyectos" class="dashboard-tab" style="display:none;">
+            <div class="card-premium">
+                <h3>Agregar Nuevo Proyecto</h3>
+                <form action="{{ url_for('agregar_proyecto') }}" method="POST">
+                    <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                        <input type="text" name="titulo" placeholder="Nombre del Proyecto" required class="input-admin">
+                        <input type="text" name="categoria" placeholder="Categoría" required class="input-admin">
+                        <input type="text" name="icono" placeholder="Ícono (Emoji)" required class="input-admin">
+                    </div>
+                    <textarea name="descripcion" placeholder="Descripción corta..." class="input-admin" rows="2" style="margin-bottom: 1rem;"></textarea>
+                    <button type="submit" class="btn-primary">Crear Proyecto</button>
+                </form>
+            </div>
+            <div class="card-premium" style="padding: 0; overflow: hidden;">
+                <table class="admin-table">
+                    <thead>
+                        <tr><th>Ícono</th><th>Título</th><th>Acción</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for p in proyectos %}
+                        <tr>
+                            <td>{{ p.icono }}</td>
+                            <td><strong>{{ p.titulo }}</strong></td>
+                            <td>
+                                <form action="{{ url_for('eliminar_proyecto', id=p.id) }}" method="POST">
+                                    <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="tab-galeria" class="dashboard-tab" style="display:none;">
+            <div class="card-premium">
+                <h3>Subir Nueva Foto</h3>
+                <form action="{{ url_for('agregar_foto') }}" method="POST" enctype="multipart/form-data">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 1rem;">
+                        <input type="text" name="titulo" placeholder="Título de la imagen" required class="input-admin">
+                        <input type="file" name="foto" required class="input-admin">
+                        <button type="submit" class="btn-primary">Subir</button>
+                    </div>
+                </form>
+            </div>
+            <div class="gallery-admin-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem;">
+                {% for f in galeria %}
+                <div class="card-premium" style="padding: 0; position: relative;">
+                    <img src="{{ url_for('static', filename='uploads/' + f.filename) }}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 20px 20px 0 0;">
+                    <div style="padding: 1rem;">
+                        <p style="font-size: 0.8rem; font-weight: 700; margin-bottom: 0.5rem;">{{ f.titulo }}</p>
+                        <form action="{{ url_for('eliminar_foto', id=f.id) }}" method="POST">
+                            <button class="btn-delete" style="width: 100%;">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div id="tab-donaciones" class="dashboard-tab" style="display:none;">
+            <div class="card-premium" style="padding: 0;">
+                <table class="admin-table">
+                    <thead><tr><th>Donante</th><th>Monto</th><th>Nro Operación</th></tr></thead>
+                    <tbody>
+                        {% for d in donaciones %}
+                        <tr>
+                            <td>{{ d.nombre }}<br><small>{{ d.email }}</small></td>
+                            <td style="color: #10B981; font-weight: 700;">S/. {{ d.monto }}</td>
+                            <td><code>{{ d.operacion }}</code></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="tab-mensajes" class="dashboard-tab" style="display:none;">
+            <div class="card-premium" style="padding: 0;">
+                <table class="admin-table">
+                    <thead><tr><th>Remitente</th><th>Mensaje</th></tr></thead>
+                    <tbody>
+                        {% for m in mensajes %}
+                        <tr>
+                            <td style="width: 250px;"><strong>{{ m.nombre }}</strong><br><small>{{ m.email }}</small></td>
+                            <td>{{ m.mensaje }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<style>
+    /* ESTILOS EXCLUSIVOS DEL DASHBOARD */
+    .sidebar-nav a {
+        text-decoration: none;
+        color: #94A3B8;
+        display: block;
+        padding: 0.8rem 1.2rem;
+        border-radius: 10px;
+        font-weight: 500;
+        transition: all 0.2s;
+        margin-bottom: 0.2rem;
+    }
+    .sidebar-nav a:hover, .sidebar-nav a.active {
+        background: rgba(255,255,255,0.1);
+        color: white;
+    }
+    .sidebar-nav i { margin-right: 10px; }
+
+    .card-premium {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        border: 1px solid #E2E8F0;
+        margin-bottom: 2rem;
+    }
+
+    .input-admin {
+        width: 100%;
+        padding: 0.8rem;
+        border-radius: 10px;
+        border: 1px solid #E2E8F0;
+        font-family: inherit;
+    }
+
+    .admin-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .admin-table th {
+        background: #F8FAFC;
+        text-align: left;
+        padding: 1rem 1.5rem;
+        font-size: 0.85rem;
+        color: #64748B;
+        border-bottom: 1px solid #E2E8F0;
+    }
+    .admin-table td {
+        padding: 1.2rem 1.5rem;
+        border-bottom: 1px solid #F1F5F9;
+        font-size: 0.95rem;
+    }
+
+    .btn-delete {
+        background: #FEE2E2;
+        color: #EF4444;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .btn-delete:hover { background: #EF4444; color: white; }
+</style>
+
+<script>
+    function showTab(tabId) {
+        // Ocultar todas las pestañas
+        document.querySelectorAll('.dashboard-tab').forEach(tab => {
+            tab.style.display = 'none';
+        });
+        
+        // Quitar clase activa de todos los links
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.classList.remove('active');
+        });
+
+        // Mostrar la pestaña seleccionada
+        document.getElementById('tab-' + tabId).style.display = 'block';
+        
+        // Activar el link correspondiente
+        document.getElementById('link-' + tabId).classList.add('active');
+        
+        // Guardar la pestaña actual en el almacenamiento local para que no se pierda al recargar
+        localStorage.setItem('activeTab', tabId);
+    }
+
+    // Al cargar la página, recuperar la pestaña activa
+    document.addEventListener("DOMContentLoaded", function() {
+        const activeTab = localStorage.getItem('activeTab') || 'resumen';
+        showTab(activeTab);
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Proyectos | Fundación Fudagape{% endblock %}
+
+{% block content %}
+<!-- ENCABEZADO DE LA SECCIÓN -->
+<section style="background: linear-gradient(135deg, var(--primary-deep, #06283D), var(--primary-light, #1363DF)); color: white; padding: 5rem 2rem; text-align: center;">
+    <div class="container" style="max-width: 800px;">
+        <span style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; display: inline-block; margin-bottom: 1rem;">Nuestra labor</span>
+        <h1 style="font-size: 2.8rem; margin: 0 0 1rem; font-weight: 800; letter-spacing: -0.5px;">Trabajo Significativo y Proyectos</h1>
+        <p style="font-size: 1.15rem; opacity: 0.9; line-height: 1.6; margin: 0;">Conoce las iniciativas con las que generamos un cambio real y duradero en nuestra comunidad en Cajamarca.</p>
+    </div>
+</section>
+
+<!-- LISTADO DE PROYECTOS -->
+<section style="padding: 5rem 2rem; background-color: var(--neutral-bg, #f1f5f9);">
+    <div class="container" style="max-width: 1100px;">
+        
+        <!-- Si existen proyectos en la base de datos se muestran, de lo contrario o combinados mostramos la propuesta enriquecida -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+            
+            <!-- Proyecto 1 -->
+            <div style="background: var(--surface-white, #ffffff); border-radius: 20px; overflow: hidden; border: 1px solid var(--border, #e2e8f0); box-shadow: var(--shadow-soft, 0 10px 25px -5px rgba(6, 40, 61, 0.05)); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(6, 40, 61, 0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-soft, 0 10px 25px -5px rgba(6, 40, 61, 0.05)';"">
+                <div style="background: linear-gradient(135deg, #eff6ff, #dbeafe); height: 160px; display: flex; align-items: center; justify-content: center; font-size: 4rem; border-bottom: 1px solid var(--border, #e2e8f0);">
+                    📚
+                </div>
+                <div style="padding: 2.5rem;">
+                    <span style="background: #e0f2fe; color: #0369a1; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 1rem;">Educación</span>
+                    <h3 style="color: var(--primary-deep, #06283D); font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.3;">Educación que Transforma Vidas</h3>
+                    <p style="color: var(--text-muted, #64748B); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem;">Clases de refuerzo escolar y valores éticos impartidas con dedicación a niños, fomentando un desarrollo sano y solidario desde la infancia.</p>
+                    <div style="border-top: 1px solid var(--border, #e2e8f0); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: #10b981;">● Activo</span>
+                        <a href="{{ url_for('contacto') }}" style="color: var(--primary-blue, #1363DF); font-weight: 700; text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;">Involúcrate &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 2 -->
+            <div style="background: var(--surface-white, #ffffff); border-radius: 20px; overflow: hidden; border: 1px solid var(--border, #e2e8f0); box-shadow: var(--shadow-soft, 0 10px 25px -5px rgba(6, 40, 61, 0.05)); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(6, 40, 61, 0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-soft, 0 10px 25px -5px rgba(6, 40, 61, 0.05)';"">
+                <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); height: 160px; display: flex; align-items: center; justify-content: center; font-size: 4rem; border-bottom: 1px solid var(--border, #e2e8f0);">
+                    🍲
+                </div>
+                <div style="padding: 2.5rem;">
+                    <span style="background: #fef3c7; color: #b45309; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 1rem;">Programas Sociales</span>
+                    <h3 style="color: var(--primary-deep, #06283D); font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.3;">Asistencia Alimentaria Comunitaria</h3>
+                    <p style="color: var(--text-muted, #64748B); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem;">Programas orientados a brindar soporte nutricional y acompañamiento integral a familias que enfrentan situaciones de alta adversidad.</p>
+                    <div style="border-top: 1px solid var(--border, #e2e8f0); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: #10b981;">● Activo</span>
+                        <a href="{{ url_for('donaciones') }}" style="color: var(--primary-blue, #1363DF); font-weight: 700; text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;">Apoya esta causa &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 3 -->
+            <div style="background: var(--surface-white, #ffffff); border-radius: 20px; overflow: hidden; border: 1px solid var(--border, #e2e8f0); box-shadow: var(--shadow-soft, 0 10px 25px -5px rgba(6, 40, 61, 0.05)); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 20px 40px rgba(6, 40, 61, 0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-soft, 0 10px 25px -5px rgba(6, 40, 61, 0.05)';"">
+                <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); height: 160px; display: flex; align-items: center; justify-content: center; font-size: 4rem; border-bottom: 1px solid var(--border, #e2e8f0);">
+                    🌱
+                </div>
+                <div style="padding: 2.5rem;">
+                    <span style="background: #d1fae5; color: #065f46; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 1rem;">Crecimiento Integral</span>
+                    <h3 style="color: var(--primary-deep, #06283D); font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.3;">Encuentros de Bienestar y Valores</h3>
+                    <p style="color: var(--text-muted, #64748B); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem;">Espacios comunitarios de reflexión, orientación familiar y desarrollo humano fundamentados en principios de amor y servicio desinteresado.</p>
+                    <div style="border-top: 1px solid var(--border, #e2e8f0); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: #10b981;">● Activo</span>
+                        <a href="{{ url_for('contacto') }}" style="color: var(--primary-blue, #1363DF); font-weight: 700; text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem;">Conoce más &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Si desde el panel de administración se agregaron proyectos adicionales dinámicos -->
+            {% if proyectos %}
+                {% for p in proyectos %}
+                <div style="background: var(--surface-white, #ffffff); border-radius: 20px; overflow: hidden; border: 1px solid var(--border, #e2e8f0); box-shadow: var(--shadow-soft, 0 10px 25px -5px rgba(6, 40, 61, 0.05));">
+                    <div style="background: linear-gradient(135deg, #e2e8f0, #cbd5e1); height: 160px; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+                        ✨
+                    </div>
+                    <div style="padding: 2.5rem;">
+                        <span style="background: #e2e8f0; color: #334155; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 1rem;">{{ p.categoria if p.categoria else 'Iniciativa' }}</span>
+                        <h3 style="color: var(--primary-deep, #06283D); font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem;">{{ p.titulo }}</h3>
+                        <p style="color: var(--text-muted, #64748B); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem;">{{ p.descripcion }}</p>
+                        <div style="border-top: 1px solid var(--border, #e2e8f0); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 0.85rem; font-weight: 600; color: #10b981;">● Activo</span>
+                            <a href="{{ url_for('contacto') }}" style="color: var(--primary-blue, #1363DF); font-weight: 700; text-decoration: none;">Participar &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Fundación{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navegación Superior Sin Enlace de Admin -->
+    <header>
+        <nav>
+            <a href="{{ url_for('home') }}" class="logo">
+                <span class="logo-icon">✨</span> Fudagape
+            </a>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Inicio</a></li>
+                <li><a href="{{ url_for('proyectos') }}">Proyectos</a></li>
+                <li><a href="{{ url_for('nosotros') }}">Nosotros</a></li>
+                <li><a href="{{ url_for('donaciones') }}" class="nav-donate">Donar</a></li>
+                <li><a href="{{ url_for('contacto') }}">Involucrarse</a></li>
+                <!-- El botón del Panel Admin ha sido removido del menú público -->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido Dinámico -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Pie de Página Institucional -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Fundación Fudagape. Transformando vidas con propósito y servicio.</p>
+            <p class="footer-sub">Cajamarca, Perú</p>
+        </div>
+    </footer>
+
+</body>
+</html>
